@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wardley Maps</title>
+  <link rel="stylesheet" href="src/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Wardley Maps</h1>
+    <nav class="menubar" aria-label="Main menu">
+      <details class="menu" id="file-menu">
+        <summary>File</summary>
+        <div class="menu-items">
+          <button type="button" data-action="new">New map</button>
+          <button type="button" data-action="open">Open definition…</button>
+          <button type="button" data-action="save-text">Save definition (.wardley)</button>
+          <hr>
+          <button type="button" data-action="export-png">Export image (PNG)</button>
+          <button type="button" data-action="export-svg">Export image (SVG)</button>
+          <hr>
+          <button type="button" data-action="share">Copy share link</button>
+          <button type="button" data-action="copy-text">Copy definition text</button>
+        </div>
+      </details>
+      <details class="menu" id="learn-menu">
+        <summary>Learn</summary>
+        <div class="menu-items" id="learn-list"></div>
+      </details>
+      <details class="menu" id="samples-menu">
+        <summary>Samples</summary>
+        <div class="menu-items" id="samples-list"></div>
+      </details>
+      <details class="menu" id="help-menu">
+        <summary>Help</summary>
+        <div class="menu-items">
+          <button type="button" data-help-action="syntax">Syntax reference…</button>
+          <button type="button" data-help-action="tutorial">Tea Shop tutorial</button>
+        </div>
+      </details>
+    </nav>
+    <output id="status" aria-live="polite"></output>
+    <input type="file" id="file-input" aria-label="Open map definition file" accept=".wardley,.txt,text/plain" hidden>
+  </header>
+  <main id="layout">
+    <section class="editor" id="editor" aria-label="Map definition">
+      <div class="editor-head">
+        <button type="button" id="collapse" aria-controls="editor-body" aria-expanded="true" title="Collapse map definition">
+          <span class="chevron" aria-hidden="true">‹</span>
+          <span class="sr-only">Collapse map definition</span>
+        </button>
+        <label for="source">Map definition</label>
+      </div>
+      <div class="editor-body" id="editor-body">
+        <textarea id="source" spellcheck="false"></textarea>
+        <ul id="errors" role="alert"></ul>
+      </div>
+    </section>
+    <section class="canvas" aria-label="Map">
+      <div class="map-wrap">
+        <svg id="map" role="img" aria-label="Wardley map"></svg>
+        <div id="overlay"></div>
+      </div>
+    </section>
+    <aside class="tutorial-card" id="tutorial-card" aria-labelledby="tut-title">
+      <div class="card-head">
+        <span id="tut-progress"></span>
+        <button type="button" id="tut-exit" title="Exit tutorial (Esc)" aria-label="Exit tutorial">✕</button>
+      </div>
+      <h2 id="tut-title"></h2>
+      <div id="tut-body" aria-live="polite"></div>
+      <div class="card-foot">
+        <button type="button" id="tut-back">← Back</button>
+        <button type="button" id="tut-next" class="primary">Next →</button>
+      </div>
+    </aside>
+  </main>
+  <dialog id="help-dialog" aria-labelledby="help-title">
+    <header class="dialog-head">
+      <h1 id="help-title">Help: map syntax</h1>
+      <button type="button" data-close aria-label="Close help">✕</button>
+    </header>
+    <div class="dialog-body" id="help-body"></div>
+  </dialog>
+  <script src="vendor/d3.min.js"></script>
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
