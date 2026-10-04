@@ -17,3 +17,9 @@ The VS Code "Live Server" extension works too.
 ## Live Demo
 
 Check out the live demo [here](https://scttech.github.io/wardley_maps/index.html)
+
+## Syntax Reference
+
+The map editor has a syntax reference and tutorials to get you started.  
+
+You can also check out the [syntax here](./docs/syntax.md)
