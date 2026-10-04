@@ -16,4 +16,4 @@ The VS Code "Live Server" extension works too.
 
 ## Live Demo
 
-Check out the live demo here
+Check out the live demo [here](https://scttech.github.io/wardley_maps/index.html)
